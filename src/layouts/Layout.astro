@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/profile';
+interface Props { title?: string; description?: string; }
+const { title = `${profile.name} — Robotics & Robot Learning`, description = profile.description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const home = base.endsWith('/') ? base : `${base}/`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f3eb" />
+    <link rel="icon" type="image/svg+xml" href={`${home}favicon.svg`} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href={home} aria-label="Victor Staven home"><span class="monogram">vs<span>.</span></span><span>Victor Staven</span></a>
+      <nav aria-label="Main navigation">
+        <a href={`${home}#research`}>Research</a>
+        <a href={`${home}#publications`}>Publications</a>
+        <a href={`${home}#projects`}>Projects</a>
+        <a href={`${home}#about`}>About</a>
+        <a class="nav-cv" href={`${home}cv/`}>CV <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <slot />
+    <footer class="wrap site-footer">
+      <a class="wordmark" href={home}><span class="monogram">vs<span>.</span></span><span>{profile.name}</span></a>
+      <span>Robotics. Learning. The physical world.</span>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </footer>
+  </body>
+</html>

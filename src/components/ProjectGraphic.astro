@@ -1,0 +1,30 @@
+---
+interface Props { type: string; }
+const { type } = Astro.props;
+---
+<div class={`project-symbol ${type}`} aria-hidden="true">
+  <svg viewBox="0 0 120 120" fill="none">
+    {type === 'mjsim' ? <>
+      <path d="m12 82 46-24 48 24-47 24zM12 94l47-24 47 24M35 70l47 24M35 94l47-24" stroke="currentColor" opacity=".2"/>
+      <path d="M42 81V60L31 38l30-15 23 25" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+      <circle cx="31" cy="38" r="6" fill="#d6b478"/><circle cx="61" cy="23" r="6" fill="#d6b478"/>
+      <path d="m84 48 9 9-7 10m-2-19-9 9 5 10" stroke="currentColor" stroke-width="3"/>
+    </> : type === 'biotac' ? <>
+      <path d="M35 97V48a25 25 0 0 1 50 0v49z" fill="currentColor" opacity=".12"/>
+      <path d="M35 97V48a25 25 0 0 1 50 0v49M45 94V49a15 15 0 0 1 30 0v45M54 88V51a6 6 0 0 1 12 0v37" stroke="currentColor" stroke-width="2"/>
+      <circle cx="60" cy="52" r="23" fill="#d6a16b" opacity=".18"/><circle cx="60" cy="52" r="13" fill="#d6a16b" opacity=".45"/><circle cx="60" cy="52" r="5" fill="#b17444"/>
+      <path d="M91 45h14m-10 10h10M15 45h14m-14 10h10" stroke="currentColor" stroke-width="2"/>
+    </> : type === 'hande' ? <>
+      <rect x="32" y="61" width="56" height="35" rx="5" fill="currentColor" opacity=".17"/>
+      <path d="M38 66V29h14v26m30 11V29H68v26" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="32" y="61" width="56" height="35" rx="5" stroke="currentColor" stroke-width="2"/>
+      <circle cx="60" cy="78" r="7" stroke="currentColor" stroke-width="2"/>
+      <path d="m21 43 8-5v10zm78 0-8-5v10z" fill="#b9804b"/>
+    </> : <>
+      <path d="M33 17h41l17 18v69H33z" fill="currentColor" opacity=".08"/>
+      <path d="M33 17h41l17 18v69H33zM74 17v18h17M45 46h34M45 54h26M45 90h34" stroke="currentColor" stroke-width="2"/>
+      <path d="m46 80 9-10 10 5 14-14" stroke="#b9804b" stroke-width="3"/>
+      <path d="M25 27v85h54" stroke="currentColor" opacity=".4" stroke-width="2"/>
+    </>}
+  </svg>
+</div>

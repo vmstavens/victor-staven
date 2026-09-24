@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile, research, publications } from '../data/profile';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Layout title={`CV — ${profile.name}`}>
+  <main class="wrap cv-page" id="main"><div id="top"></div><div class="cv-heading"><div><div class="eyebrow">BACKGROUND & RESEARCH INTERESTS</div><h1>{profile.name}</h1><p class="hero-role">{profile.role}</p>{profile.affiliation && <p>{profile.affiliation}</p>}</div><div class="cv-actions">{profile.cv && <a class="button" href={`${base}${profile.cv}`}>Download CV ↓</a>}<button class="button secondary" id="print-cv">Print / save PDF <span aria-hidden="true">↗</span></button></div></div>
+    <div class="cv-row"><h2>Profile</h2><p>{profile.bio}</p></div>
+    <div class="cv-row"><h2>Current appointment</h2><div><h3>PhD researcher · SDU Robotics</h3><p>March 2025 — present · University of Southern Denmark</p><p>Dexterous Manipulation for Industrial Automation<br />Supervisor: Christoffer Sloth</p></div></div>
+    <div class="cv-row"><h2>Research interests</h2><div>{research.map(item => <article class="cv-interest"><h3>{item.shortTitle}</h3><p>{item.description}</p></article>)}</div></div>
+    <div class="cv-row"><h2>Selected publications</h2><div>{publications.map(p => <article class="cv-interest"><h3><a href={p.paper}>{p.title}</a></h3><p>{p.authors}</p><p>{p.venue} · {p.year}</p></article>)}</div></div>
+    <div class="cv-row"><h2>Research projects</h2><div><h3>SPATAIS</h3><p>Project participant · Sorting Plastic And Textiles using AI driven sensing Solutions.</p><p>Project period: November 2022 — December 2024.</p></div></div>
+    <div class="cv-row"><h2>Links</h2><div class="social-links"><a href={profile.institutional}>SDU profile ↗</a><a href={profile.orcid}>ORCID ↗</a><a href={profile.github}>GitHub ↗</a>{profile.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}{profile.scholar && <a href={profile.scholar}>Google Scholar ↗</a>}{profile.linkedin && <a href={profile.linkedin}>LinkedIn ↗</a>}</div></div>
+    <p class="content-note">Affiliation and publication details are also available on my institutional profile.</p>
+  </main>
+  <script>document.querySelector('#print-cv')?.addEventListener('click', () => window.print());</script>
+</Layout>

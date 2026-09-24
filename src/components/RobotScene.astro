@@ -1,0 +1,31 @@
+<div class="scene-shell" id="robot-demo">
+  <div class="scene-topline"><span><i></i> MANIPULATION STUDY</span><span>01 / IN-HAND</span></div>
+  <div class="scene-title"><h2>A small motion.<br />A dexterous problem.</h2><p>Roll the object.<br />Keep the contact.</p></div>
+  <div class="scene-viewport" id="scene-viewport" role="img" aria-label="Illustrative 3D demonstration of two articulated fingers rolling a cylinder toward a target orientation. Copper marks the object; mint marks the target. Drag to orbit and scroll to zoom.">
+    <div class="scene-fallback" id="scene-fallback">
+      <svg viewBox="0 0 500 320" aria-hidden="true">
+        <ellipse cx="250" cy="279" rx="145" ry="15" fill="#071d1d" />
+        <rect x="130" y="251" width="240" height="27" rx="10" fill="#617f7b" />
+        <path d="m153 253-26-99 66-19m154 118 27-99-67-19" stroke="#acc1b8" stroke-width="24" fill="none" stroke-linejoin="round"/>
+        <circle cx="250" cy="133" r="52" fill="#ca875c" stroke="#f0bd87" stroke-width="3" />
+        <path d="m250 133 35-38" stroke="#193d38" stroke-width="9" stroke-linecap="round" />
+        <path d="m250 133-31-43" stroke="#8fe0c3" stroke-width="3" stroke-dasharray="5 5" />
+        <circle cx="197" cy="135" r="6" fill="#8fe0c3"/><circle cx="303" cy="135" r="6" fill="#8fe0c3"/>
+      </svg>
+      <span>Two fingers · one object · controlled rotation</span>
+    </div>
+  </div>
+  <div class="scene-readout"><span>OBJECT ROTATION <strong id="scene-angle">−35°</strong></span><span>TARGET <strong>+35°</strong></span></div>
+  <div class="scene-controls" hidden id="scene-controls">
+    <button id="scene-play" type="button" aria-label="Pause animation" aria-pressed="false"><span id="play-symbol" aria-hidden="true">Ⅱ</span></button>
+    <label class="timeline">Roll <input id="scene-progress" type="range" min="0" max="100" value="0" aria-label="Trajectory progress" /></label>
+    <button id="scene-reset" type="button" aria-label="Reset camera and trajectory">↺</button>
+  </div>
+  <div class="scene-options" id="scene-options" hidden><button id="scene-contacts" aria-pressed="true">Contact normals</button><button id="scene-target" aria-pressed="true">Target orientation</button><span id="scene-hint">Drag to orbit · Scroll to zoom</span></div>
+  <p class="scene-explanation">The fingers coordinate their motion as the object turns, maintaining contact on both sides.</p>
+  <div class="scene-bottom"><span class="scene-note">Kinematic illustration</span><a href="https://arxiv.org/abs/2503.08222">Related IROS paper <span aria-hidden="true">↗</span></a></div>
+</div>
+<script>
+  import { initRobotScene } from '../scripts/robot-scene';
+  initRobotScene();
+</script>
