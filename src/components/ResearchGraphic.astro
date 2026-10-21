@@ -1,27 +1,26 @@
 ---
-interface Props { type: string; }
-const { type } = Astro.props;
+import { Image } from 'astro:assets';
+import CableRoutingDiagram from './CableRoutingDiagram.astro';
+import hand from '../assets/research/hand-carbon.png';
+import simulation from '../assets/research/simulation.png';
+interface Props { type: string; large?: boolean; }
+const { type, large = false } = Astro.props;
+const visuals = {
+  hand: { image: hand, label: 'Shadow Hand E3M5', caption: 'Model visualization', alt: 'Detailed render of the articulated Shadow Hand model holding a cylindrical object between its thumb and index finger.' },
+  simulation: { image: simulation, label: 'Geometry and articulation', caption: 'Model visualization', alt: 'Solid and wireframe views of the same articulated Shadow Hand model on a simulation grid.' },
+};
+const visual = visuals[type as keyof typeof visuals] || visuals.simulation;
 ---
-<div class={`research-graphic ${type}`} aria-hidden="true">
-  <svg viewBox="0 0 440 250" fill="none">
-    {type === 'cable' ? <>
-      <g stroke="currentColor" opacity=".16"><path d="M0 175 220 60 440 175M0 215 220 100 440 215M60 250 280 135 440 218M0 130 220 245 440 130M0 90 220 205 440 90" /></g>
-      <path d="M55 173c13-59 55-77 79-42s-3 72 48 65 32-70 62-84 49-7 66-2" stroke="#d5b68b" stroke-width="17" stroke-linecap="round" transform="translate(0 7)" opacity=".4"/>
-      <path d="M55 166c13-59 55-77 79-42s-3 72 48 65 32-70 62-84 49-7 66-2" stroke="#af6942" stroke-width="11" stroke-linecap="round"/>
-      <path d="M55 164c13-59 55-77 79-42s-3 72 48 65 32-70 62-84 49-7 66-2" stroke="#e7b783" stroke-width="3" stroke-linecap="round"/>
-    </> : type === 'hand' ? <>
-      <circle cx="250" cy="125" r="76" stroke="#bbc8bb" stroke-dasharray="3 7"/>
-      <circle cx="250" cy="125" r="49" fill="#dce6d8" stroke="#9aad91"/>
-      <g stroke="#778578" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"><path d="m176 194-33-48 12-36 26-6"/><path d="m202 185-9-53 3-62 21-25"/><path d="m224 183 4-54 9-68 23-19"/><path d="m244 192 21-43 23-47 28-10"/><path d="m263 207 31-37 28-27 24 2"/></g>
-      <g stroke="#cbd2c8" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="m176 194-33-48 12-36 26-6"/><path d="m202 185-9-53 3-62 21-25"/><path d="m224 183 4-54 9-68 23-19"/><path d="m244 192 21-43 23-47 28-10"/><path d="m263 207 31-37 28-27 24 2"/></g>
-      <path d="m171 172 93 14 11 45-81 13z" fill="#9daa9a" stroke="#778578"/><g fill="#52664d"><circle cx="193" cy="132" r="6"/><circle cx="228" cy="129" r="6"/><circle cx="265" cy="149" r="6"/><circle cx="294" cy="170" r="6"/></g>
-    </> : <>
-      <g stroke="#b9cab2"><path d="m50 165 166-88 174 87-166 89zM50 135l174 88 166-88M50 105l174 88 166-88M50 75l174 88 166-88"/><path d="M50 75v90M390 75v90M224 163v90"/></g>
-      <g stroke="#587460" stroke-width="22" stroke-linecap="round"><path d="M165 163v-51l-35-40 58-40 52 51"/></g><g stroke="#c8d4c0" stroke-width="14" stroke-linecap="round"><path d="M165 163v-51l-35-40 58-40 52 51"/></g>
-      <g fill="#375642"><circle cx="165" cy="112" r="11"/><circle cx="130" cy="72" r="11"/><circle cx="188" cy="32" r="11"/></g>
-      <path d="m240 83 18 7-9 19m-9-26-9 17 13 15" stroke="#587460" stroke-width="6"/>
-      <path d="M260 147c23-27 53-11 58-49" stroke="#b77a4d" stroke-dasharray="4 5" stroke-width="2"/><path d="m263 131 20 10v23l-20-10z" fill="#b88151"/><path d="m263 131 21-10 20 10-21 10z" fill="#ebd5ae"/><path d="m283 141 21-10v23l-21 10z" fill="#cfaa77"/>
-    </>}
-  </svg>
-  <span class="graphic-label">{type === 'cable' ? 'DEFORMABLE LINEAR OBJECT' : type === 'hand' ? 'MULTI-FINGERED MANIPULATION' : 'SIMULATED ENVIRONMENT'}</span>
-</div>
+<figure class={`research-graphic ${type}`}>
+  {type === 'cable' ? <CableRoutingDiagram /> : <Image src={visual.image} alt={visual.alt} widths={[440, 720, 1100, 1500]} sizes={large ? '(max-width: 760px) 100vw, 50vw' : '(max-width: 760px) 100vw, 33vw'} width={1500} height={960} format="webp" quality={85} loading="lazy" decoding="async" />}
+  <figcaption><span>{type === 'cable' ? 'Cable manipulation' : visual.label}</span><span>{type === 'cable' ? 'Tactile following · schematic' : visual.caption}</span></figcaption>
+</figure>
+<style>
+  .research-graphic{margin:0;position:relative;overflow:hidden;background:var(--raised);border:0;color:var(--ink)}
+  .research-graphic img{display:block;width:100%;height:auto;aspect-ratio:25/16;object-fit:cover;transition:transform .4s ease}
+  figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 17px;background:var(--raised);border-top:1px solid var(--line);font-size:9px;line-height:1.5;letter-spacing:.2px}
+  figcaption>span:last-child{color:var(--muted);font-size:8px;text-align:right}
+  .simulation figcaption{background:var(--raised);color:var(--ink);border-color:var(--line)}.simulation figcaption>span:last-child{color:var(--muted)}
+  :global(.research-card:hover) img,:global(.research-card:focus-within) img{transform:scale(1.025)}
+  @media(prefers-reduced-motion:reduce){.research-graphic img{transition:none;transform:none!important}}
+</style>

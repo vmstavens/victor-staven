@@ -1,31 +1,92 @@
-<div class="scene-shell" id="robot-demo">
-  <div class="scene-topline"><span><i></i> MANIPULATION STUDY</span><span>01 / IN-HAND</span></div>
-  <div class="scene-title"><h2>A small motion.<br />A dexterous problem.</h2><p>Roll the object.<br />Keep the contact.</p></div>
-  <div class="scene-viewport" id="scene-viewport" role="img" aria-label="Illustrative 3D demonstration of two articulated fingers rolling a cylinder toward a target orientation. Copper marks the object; mint marks the target. Drag to orbit and scroll to zoom.">
+---
+import WorkbenchPreview from './WorkbenchPreview.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<div class="scene-shell" id="robot-demo" data-scene-state="preview">
+  <div class="scene-topline"><span><i></i> ROBOTICS VISUALIZATION</span><span>AN INTERACTIVE ILLUSTRATION</span></div>
+  <div class="scene-title"><h2>Shadow Hand<br />manipulation</h2><p>Interactive<br />kinematic model</p></div>
+  <div class="scene-viewport" id="scene-viewport" role="group" aria-label="An illustrated robotics workbench with an articulated Shadow Hand, simulation monitor, tactile sensor, and cable. Drag to orbit the 3D scene.">
     <div class="scene-fallback" id="scene-fallback">
-      <svg viewBox="0 0 500 320" aria-hidden="true">
-        <ellipse cx="250" cy="279" rx="145" ry="15" fill="#071d1d" />
-        <rect x="130" y="251" width="240" height="27" rx="10" fill="#617f7b" />
-        <path d="m153 253-26-99 66-19m154 118 27-99-67-19" stroke="#acc1b8" stroke-width="24" fill="none" stroke-linejoin="round"/>
-        <circle cx="250" cy="133" r="52" fill="#ca875c" stroke="#f0bd87" stroke-width="3" />
-        <path d="m250 133 35-38" stroke="#193d38" stroke-width="9" stroke-linecap="round" />
-        <path d="m250 133-31-43" stroke="#8fe0c3" stroke-width="3" stroke-dasharray="5 5" />
-        <circle cx="197" cy="135" r="6" fill="#8fe0c3"/><circle cx="303" cy="135" r="6" fill="#8fe0c3"/>
-      </svg>
-      <span>Two fingers · one object · controlled rotation</span>
+      <WorkbenchPreview />
+      <span>Shadow Hand, tactile sensing, and robot simulation.</span>
+    </div>
+    <div class="workbench-hotspots" aria-label="Explore the workbench">
+      <button type="button" class="workbench-hotspot" data-workbench-object="hand" style="--hotspot-x:36%;--hotspot-y:45%" aria-label="Explore the Shadow Hand" aria-expanded="false" aria-controls="workbench-details"><span aria-hidden="true">01</span><span class="hotspot-label">Shadow Hand</span></button>
+      <button type="button" class="workbench-hotspot" data-workbench-object="cable" style="--hotspot-x:64%;--hotspot-y:67%" aria-label="Explore cable manipulation" aria-expanded="false" aria-controls="workbench-details"><span aria-hidden="true">02</span><span class="hotspot-label">Cable manipulation</span></button>
+      <button type="button" class="workbench-hotspot" data-workbench-object="monitor" style="--hotspot-x:72%;--hotspot-y:29%" aria-label="Explore simulation tools" aria-expanded="false" aria-controls="workbench-details"><span aria-hidden="true">03</span><span class="hotspot-label">Simulation tools</span></button>
     </div>
   </div>
+  <div class="workbench-details" id="workbench-details" hidden>
+    <div aria-live="polite">
+      <div data-workbench-detail="hand" hidden><h3>Dexterous manipulation</h3><p>Coordinated finger motion and tactile feedback support precise object manipulation.</p><a href={`${base}research/dexterous-manipulation/`}>Explore dexterous manipulation ↗</a></div>
+      <div data-workbench-detail="cable" hidden><h3>Deformable object manipulation</h3><p>My research studies cable following and routing using tactile sensing and path planning.</p><a href={`${base}research/deformable-manipulation/`}>Explore cable manipulation ↗</a></div>
+      <div data-workbench-detail="monitor" hidden><h3>Robot simulation tools</h3><p>Software for developing robot controllers, constructing simulation environments, and running repeatable experiments.</p><a href={`${base}#projects`}>Explore simulation tools ↗</a></div>
+    </div>
+    <button type="button" class="workbench-close" aria-label="Close workbench detail">×</button>
+  </div>
+  <p class="workbench-invitation">Select an object to view related research or software.</p>
+  <button class="scene-activate" id="scene-activate" type="button">Load 3D model <span aria-hidden="true">↗</span></button>
   <div class="scene-readout"><span>OBJECT ROTATION <strong id="scene-angle">−35°</strong></span><span>TARGET <strong>+35°</strong></span></div>
   <div class="scene-controls" hidden id="scene-controls">
     <button id="scene-play" type="button" aria-label="Pause animation" aria-pressed="false"><span id="play-symbol" aria-hidden="true">Ⅱ</span></button>
     <label class="timeline">Roll <input id="scene-progress" type="range" min="0" max="100" value="0" aria-label="Trajectory progress" /></label>
     <button id="scene-reset" type="button" aria-label="Reset camera and trajectory">↺</button>
   </div>
-  <div class="scene-options" id="scene-options" hidden><button id="scene-contacts" aria-pressed="true">Contact normals</button><button id="scene-target" aria-pressed="true">Target orientation</button><span id="scene-hint">Drag to orbit · Scroll to zoom</span></div>
-  <p class="scene-explanation">The fingers coordinate their motion as the object turns, maintaining contact on both sides.</p>
-  <div class="scene-bottom"><span class="scene-note">Kinematic illustration</span><a href="https://arxiv.org/abs/2503.08222">Related IROS paper <span aria-hidden="true">↗</span></a></div>
+  <div class="scene-options" id="scene-options" hidden><button id="scene-contacts" aria-pressed="true">Contact points</button><button id="scene-target" aria-pressed="true">Target orientation</button><span id="scene-hint">Drag to rotate the view</span></div>
+  <div class="cable-controls" id="cable-controls" hidden>
+    <div><button type="button" id="cable-move" aria-pressed="false" aria-describedby="cable-hint">Move cable</button><button type="button" id="cable-reset">Reset cable</button></div>
+    <p id="cable-hint">Drag the cable off the table. On touch screens, enable Move cable first.</p>
+    <span id="cable-status" class="cable-status" role="status" aria-live="polite">Cable on table.</span>
+  </div>
+  <p class="scene-explanation">Use the slider to adjust the illustrated thumb–index manipulation trajectory.</p>
+  <p class="scene-model-credit">Shadow Hand E3M5 · <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/shadow_hand">MuJoCo Menagerie</a> · <a href={`${base}models/shadow-hand/NOTICE.txt`}>Credits &amp; license</a></p>
+  <div class="scene-bottom"><span class="scene-note">Illustrative motion · not an experiment replay</span><a href="https://arxiv.org/abs/2503.08222">Related IROS paper <span aria-hidden="true">↗</span></a></div>
 </div>
 <script>
-  import { initRobotScene } from '../scripts/robot-scene';
-  initRobotScene();
+  const hotspots = [...document.querySelectorAll<HTMLButtonElement>('[data-workbench-object]')];
+  const details = document.getElementById('workbench-details')!;
+  const panels = [...document.querySelectorAll<HTMLElement>('[data-workbench-detail]')];
+  let selected: HTMLButtonElement | null = null;
+  function closeDetails() {
+    details.hidden = true;
+    hotspots.forEach(button => button.setAttribute('aria-expanded', 'false'));
+    selected?.focus({ preventScroll: true });
+    selected = null;
+  }
+  hotspots.forEach(button => button.addEventListener('click', () => {
+    if (selected === button && !details.hidden) { closeDetails(); return; }
+    selected = button;
+    details.hidden = false;
+    hotspots.forEach(item => item.setAttribute('aria-expanded', String(item === button)));
+    panels.forEach(panel => { panel.hidden = panel.dataset.workbenchDetail !== button.dataset.workbenchObject; });
+  }));
+  document.querySelector('.workbench-close')?.addEventListener('click', closeDetails);
+  document.getElementById('robot-demo')?.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !details.hidden) { event.preventDefault(); closeDetails(); }
+  });
+  const viewport = document.getElementById('scene-viewport');
+  const activate = document.getElementById('scene-activate') as HTMLButtonElement | null;
+  let started = false;
+  async function start() {
+    if (started || !activate) return;
+    started = true;
+    activate.disabled = true;
+    try {
+      const { initRobotScene } = await import('../scripts/robot-scene');
+      await initRobotScene();
+      activate.hidden = true;
+    } catch {
+      started = false;
+      activate.disabled = false;
+      activate.textContent = 'Retry 3D preview ↗';
+      activate.classList.add('scene-retry');
+    }
+  }
+  activate?.addEventListener('click', start);
+  if (viewport && !window.matchMedia('(max-width: 760px)').matches) {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { observer.disconnect(); start(); }
+    }, { rootMargin: '150px' });
+    observer.observe(viewport);
+  }
 </script>

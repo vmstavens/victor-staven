@@ -3,8 +3,8 @@ export const profile = {
   name: 'Victor Melbye Staven',
   shortName: 'Victor Staven',
   role: 'PhD researcher in robotics',
-  description: 'Exploring robot learning, deformable object manipulation, and dexterous interaction with the physical world.',
-  bio: 'I’m a PhD researcher at SDU Robotics, University of Southern Denmark, working on dexterous manipulation for industrial automation with Christoffer Sloth. My research explores how robots can handle flexible objects, learn from interaction, and transfer manipulation skills from simulation to the real world.',
+  description: 'Research in robot learning, deformable object manipulation, and dexterous manipulation.',
+  bio: 'I am a PhD researcher at SDU Robotics, University of Southern Denmark, working on dexterous manipulation for industrial automation with Christoffer Sloth. My research focuses on deformable object manipulation, robot learning, and the transfer of manipulation methods from simulation to physical robots.',
   email: 'vims@mmmi.sdu.dk',
   affiliation: 'SDU Robotics · University of Southern Denmark',
   github: 'https://github.com/vmstavens',
@@ -18,7 +18,7 @@ export const profile = {
 export const research = [
   {
     slug: 'deformable-manipulation', number: '01', kind: 'Deformable objects',
-    title: 'Learning to work with flexibility.', shortTitle: 'Deformable object manipulation',
+    title: 'Deformable object manipulation', shortTitle: 'Deformable object manipulation',
     description: 'Following and routing flexible cables using tactile sensing and path planning.',
     tags: ['Tactile sensing', 'Cable routing'], graphic: 'cable',
     intro: 'Our ICCMA 2024 work studies cable following and routing using tactile sensing and homotopy-constrained path planning. The system estimates cable pose from tactile feedback and transfers planning and control from MuJoCo simulation to physical hardware.',
@@ -26,7 +26,7 @@ export const research = [
   },
   {
     slug: 'dexterous-manipulation', number: '02', kind: 'Dexterous interaction',
-    title: 'More fingers. More possibilities.', shortTitle: 'Dexterous manipulation',
+    title: 'Dexterous manipulation', shortTitle: 'Dexterous manipulation',
     description: 'Combining trajectory optimization and tactile force control for in-hand manipulation with a Shadow Hand.',
     tags: ['Shadow Hand', 'Contact-rich control'], graphic: 'hand',
     intro: 'Our IROS 2025 work combines trajectory optimization with tactile force control for in-hand manipulation. Using a Shadow Robot hand with magnetic tactile sensors, the framework coordinates finger motion and contact to roll small objects more robustly.',
@@ -34,10 +34,10 @@ export const research = [
   },
   {
     slug: 'simulation-and-learning', number: '03', kind: 'Simulation & learning',
-    title: 'From virtual worlds to real contact.', shortTitle: 'Simulation & robot learning',
+    title: 'Simulation and robot learning', shortTitle: 'Simulation & robot learning',
     description: 'Studying how manipulation methods developed in simulation transfer to physical robots.',
     tags: ['Reinforcement learning', 'Sim-to-real'], graphic: 'simulation',
-    intro: 'Our published cable-manipulation work develops planning, estimation, and control in MuJoCo before transferring them to a physical setup. This provides a foundation for exploring how simulation can support reliable manipulation in the real world.',
+    intro: 'Our published cable-manipulation work develops planning, estimation, and control in MuJoCo before transferring them to a physical setup. This work informs my research on simulation methods for robot manipulation.',
     questions: ['Which variations in simulation help a policy handle the real world?', 'How can visualizations make learned behavior easier to inspect?', 'How should manipulation skills be evaluated beyond a single successful trial?'],
   },
 ];

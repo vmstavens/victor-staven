@@ -13,7 +13,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6f3eb" />
+    <meta name="theme-color" content="#111214" />
     <link rel="icon" type="image/svg+xml" href={`${home}favicon.svg`} />
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
@@ -37,7 +37,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <slot />
     <footer class="wrap site-footer">
       <a class="wordmark" href={home}><span class="monogram">vs<span>.</span></span><span>{profile.name}</span></a>
-      <span>Robotics. Learning. The physical world.</span>
+      <span>Robotics · Robot learning · Manipulation</span>
       <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </footer>
   </body>

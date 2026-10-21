@@ -1,0 +1,47 @@
+{
+  "updated": "2026-09-25",
+  "citations": {
+    "total": 5,
+    "source": "https://scholar.google.com/citations?user=5VnMGoEAAAAJ&hl=en",
+    "rows": [
+      {
+        "label": "In-hand manipulation",
+        "title": "Trajectory optimization for in-hand manipulation with tactile force control",
+        "value": 4,
+        "href": "https://scholar.google.com/citations?view_op=view_citation&user=5VnMGoEAAAAJ&citation_for_view=5VnMGoEAAAAJ:u-x6o8ySG0sC"
+      },
+      {
+        "label": "Cable manipulation",
+        "title": "Sim-to-real transfer for cable manipulation with tactile sensing and homotopy-constrained path planning",
+        "value": 1,
+        "href": "https://scholar.google.com/citations?view_op=view_citation&user=5VnMGoEAAAAJ&citation_for_view=5VnMGoEAAAAJ:u5HHmVD_uO8C"
+      }
+    ]
+  },
+  "stars": {
+    "total": 8,
+    "source": "https://github.com/vmstavens?tab=repositories",
+    "rows": [
+      {
+        "label": "mjsim",
+        "value": 2,
+        "href": "https://github.com/vmstavens/mjsim"
+      },
+      {
+        "label": "BioTac simulation",
+        "value": 1,
+        "href": "https://github.com/vmstavens/biotac_sim_plugin"
+      },
+      {
+        "label": "Hand-E model fork",
+        "value": 3,
+        "href": "https://github.com/vmstavens/mujoco_menagerie_hande"
+      },
+      {
+        "label": "Thesis toolkit",
+        "value": 2,
+        "href": "https://github.com/vmstavens/thesis-template"
+      }
+    ]
+  }
+}

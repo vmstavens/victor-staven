@@ -2,11 +2,11 @@
 export const projects = [
   {
     id: 'mjsim', category: 'Simulation toolkit', title: 'mjsim',
-    description: 'Reusable building blocks for robot simulation: controllers, motion planning, cameras, and scene composition in MuJoCo.',
+    description: 'Reusable components for robot simulation: controllers, motion planning, cameras, and scene composition in MuJoCo.',
     detail: 'Python package with runnable examples and a test suite.',
     tags: ['Python', 'MuJoCo', 'Motion planning'],
     href: 'https://github.com/vmstavens/mjsim',
-    linkLabel: 'Explore the toolkit',
+    linkLabel: 'View repository',
   },
   {
     id: 'biotac', category: 'Tactile sensing', title: 'BioTac simulation',
@@ -22,12 +22,12 @@ export const projects = [
     detail: 'My Hand-E addition to a fork of Google DeepMind’s MuJoCo Menagerie.',
     tags: ['MJCF', 'Robot modeling', 'MuJoCo'],
     href: 'https://github.com/vmstavens/mujoco_menagerie_hande/tree/main/robotiq_hande',
-    linkLabel: 'Explore the model',
+    linkLabel: 'View model',
   },
   {
-    id: 'thesis', category: 'Research tools', title: 'A practical thesis toolkit',
+    id: 'thesis', category: 'Research tools', title: 'LaTeX thesis toolkit',
     description: 'A structured LaTeX thesis template with tools for SVG figures, PDF compression, references, and automatic word counts.',
-    detail: 'Small utilities that make technical writing easier.',
+    detail: 'Utilities for scientific writing and document preparation.',
     tags: ['LaTeX', 'Scientific writing', 'CLI tools'],
     href: 'https://github.com/vmstavens/thesis-template',
     linkLabel: 'View the template',

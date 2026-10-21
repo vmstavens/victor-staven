@@ -1,30 +1,61 @@
 ---
 interface Props { type: string; }
 const { type } = Astro.props;
+const labels: Record<string, string> = { mjsim: 'MUJOCO SIMULATION UTILITIES', biotac: 'TACTILE SENSOR SIMULATION', hande: 'ROBOTIQ HAND-E MODEL', thesis: 'LATEX TEMPLATE AND UTILITIES' };
 ---
-<div class={`project-symbol ${type}`} aria-hidden="true">
-  <svg viewBox="0 0 120 120" fill="none">
+<div class={`project-preview ${type}`} aria-hidden="true">
+  <div class="preview-topline"><span>{type === 'mjsim' ? '01 / SIMULATION' : type === 'biotac' ? '02 / TACTILE SENSING' : type === 'hande' ? '03 / ROBOT MODEL' : '04 / RESEARCH TOOLS'}</span><span>↗</span></div>
+  <svg viewBox="0 0 560 310" fill="none">
     {type === 'mjsim' ? <>
-      <path d="m12 82 46-24 48 24-47 24zM12 94l47-24 47 24M35 70l47 24M35 94l47-24" stroke="currentColor" opacity=".2"/>
-      <path d="M42 81V60L31 38l30-15 23 25" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
-      <circle cx="31" cy="38" r="6" fill="#d6b478"/><circle cx="61" cy="23" r="6" fill="#d6b478"/>
-      <path d="m84 48 9 9-7 10m-2-19-9 9 5 10" stroke="currentColor" stroke-width="3"/>
+      <ellipse cx="292" cy="249" rx="186" ry="26" fill="#101214" opacity=".35"/>
+      <g stroke="#68717c" stroke-width="1" opacity=".45"><path d="m51 211 223-112 235 113-224 112zM92 191l234 111M135 170l234 111M179 148l234 111M222 127l234 111M93 232l225-112M140 254l224-112M187 277l224-112M233 299l224-112"/></g>
+      <path d="m170 219 77-37 72 36-78 38z" fill="#979fa8"/><path d="m170 219 71 37 78-38v14l-78 37-71-36z" fill="#454b54"/>
+      <g stroke-linecap="round" stroke-linejoin="round"><path d="M236 217v-73l-47-44 77-57 76 67" stroke="#25292f" stroke-width="40"/><path d="M236 214v-70l-47-44 77-57 76 67" stroke="#d1d5da" stroke-width="27"/>
+      <g fill="#444a53" stroke="#9da5af" stroke-width="4"><circle cx="236" cy="144" r="19"/><circle cx="189" cy="100" r="19"/><circle cx="266" cy="43" r="19"/></g>
+      <path d="m342 110 22 13-9 22m-13-35-14 25 16 17" stroke="#d2d6db" stroke-width="9"/></g>
+      <path d="m354 204 37-19 34 18-37 20z" fill="#ff9561"/><path d="m354 204 34 19v39l-34-20z" fill="#b74c20"/><path d="m388 223 37-20v38l-37 21z" fill="#f26b2d"/>
+      <path d="M358 174c62-27 78-58 47-86" stroke="#ff8045" stroke-width="2" stroke-dasharray="5 7"/>
+      <circle cx="405" cy="88" r="5" fill="#ff8045"/>
     </> : type === 'biotac' ? <>
-      <path d="M35 97V48a25 25 0 0 1 50 0v49z" fill="currentColor" opacity=".12"/>
-      <path d="M35 97V48a25 25 0 0 1 50 0v49M45 94V49a15 15 0 0 1 30 0v45M54 88V51a6 6 0 0 1 12 0v37" stroke="currentColor" stroke-width="2"/>
-      <circle cx="60" cy="52" r="23" fill="#d6a16b" opacity=".18"/><circle cx="60" cy="52" r="13" fill="#d6a16b" opacity=".45"/><circle cx="60" cy="52" r="5" fill="#b17444"/>
-      <path d="M91 45h14m-10 10h10M15 45h14m-14 10h10" stroke="currentColor" stroke-width="2"/>
+      <g stroke="#a7afb9" opacity=".24"><circle cx="257" cy="158" r="124"/><circle cx="257" cy="158" r="100"/><path d="M94 158h326M257 20v279"/></g>
+      <ellipse cx="262" cy="267" rx="106" ry="19" fill="#111214" opacity=".16"/>
+      <path d="M203 245V110a58 58 0 0 1 116 0v135z" fill="#b7bcc3" stroke="#777f89" stroke-width="2"/>
+      <path d="M216 240V111a45 45 0 0 1 90 0v129" stroke="#e3e5e8" stroke-width="3"/>
+      <ellipse cx="261" cy="146" rx="51" ry="67" fill="#ff9d70" opacity=".35"/>
+      <ellipse cx="261" cy="138" rx="37" ry="47" fill="#ff8147" opacity=".5"/>
+      <ellipse cx="261" cy="130" rx="23" ry="28" fill="#ff6b2b" opacity=".65"/>
+      <ellipse cx="261" cy="123" rx="10" ry="13" fill="#ffd4b8"/>
+      <g fill="#555b65">{Array.from({length: 4}, (_, row) => Array.from({length: 3}, (_, col) => <circle cx={237+col*24} cy={166+row*20} r="3"/>))}</g>
+      <rect x="196" y="237" width="131" height="24" rx="7" fill="#606773"/>
+      <path d="m319 122 57-37h48M316 207l62 21h46" stroke="#9fa7b2" stroke-width="1.5"/>
+      <text x="379" y="75" fill="#c2c8d0" font-size="11" font-family="sans-serif">CONTACT</text><text x="379" y="248" fill="#c2c8d0" font-size="11" font-family="sans-serif">SENSING</text>
     </> : type === 'hande' ? <>
-      <rect x="32" y="61" width="56" height="35" rx="5" fill="currentColor" opacity=".17"/>
-      <path d="M38 66V29h14v26m30 11V29H68v26" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
-      <rect x="32" y="61" width="56" height="35" rx="5" stroke="currentColor" stroke-width="2"/>
-      <circle cx="60" cy="78" r="7" stroke="currentColor" stroke-width="2"/>
-      <path d="m21 43 8-5v10zm78 0-8-5v10z" fill="#b9804b"/>
+      <g stroke="#87929d" opacity=".25"><path d="m72 244 205-104 210 103M112 265l204-104M152 285l204-104M112 224l204 103M152 204l204 103"/></g>
+      <ellipse cx="280" cy="266" rx="113" ry="21" fill="#111214" opacity=".2"/>
+      <g class="gripper-left"><path d="M213 197V70h32v92" stroke="#656d78" stroke-width="25" stroke-linejoin="round"/><path d="M213 196V70h32v92" stroke="#d7dbe0" stroke-width="16" stroke-linejoin="round"/><rect x="241" y="77" width="12" height="58" rx="3" fill="#373c45"/></g>
+      <g class="gripper-right"><path d="M347 197V70h-32v92" stroke="#656d78" stroke-width="25" stroke-linejoin="round"/><path d="M347 196V70h-32v92" stroke="#d7dbe0" stroke-width="16" stroke-linejoin="round"/><rect x="307" y="77" width="12" height="58" rx="3" fill="#373c45"/></g>
+      <rect x="192" y="174" width="176" height="78" rx="13" fill="#555e6a"/><rect x="192" y="174" width="176" height="13" rx="5" fill="#9ba6b4"/>
+      <circle cx="280" cy="218" r="21" fill="#292e35" stroke="#9ba6b4" stroke-width="2"/><circle cx="280" cy="218" r="8" fill="#c5cdd6"/>
+      <rect x="264" y="95" width="32" height="40" rx="5" fill="#ff8045"/><path d="m169 107-21 0m243 0h21" stroke="#ff8045" stroke-width="3"/><path d="m158 100 12 7-12 7m244-14-12 7 12 7" stroke="#ff8045" stroke-width="3"/>
     </> : <>
-      <path d="M33 17h41l17 18v69H33z" fill="currentColor" opacity=".08"/>
-      <path d="M33 17h41l17 18v69H33zM74 17v18h17M45 46h34M45 54h26M45 90h34" stroke="currentColor" stroke-width="2"/>
-      <path d="m46 80 9-10 10 5 14-14" stroke="#b9804b" stroke-width="3"/>
-      <path d="M25 27v85h54" stroke="currentColor" opacity=".4" stroke-width="2"/>
+      <ellipse cx="279" cy="263" rx="161" ry="23" fill="#111214" opacity=".13"/>
+      <g transform="rotate(-10 213 155)"><rect x="123" y="40" width="160" height="215" rx="3" fill="#aaaeb6" stroke="#777f89"/><path d="M144 67h107m-107 13h83M144 104h113m-113 10h113m-113 10h97M144 153h113m-113 10h113m-113 10h103M144 223h87" stroke="#636b76" stroke-width="3"/></g>
+      <g transform="rotate(7 324 160)"><rect x="230" y="28" width="171" height="236" rx="3" fill="#dfe2e7" stroke="#777f89"/><rect x="250" y="53" width="9" height="29" fill="#303740"/><path d="M269 59h100m-100 11h76" stroke="#303740" stroke-width="4"/><path d="M250 103h130m-130 10h130m-130 10h98" stroke="#9aa3af" stroke-width="3"/>
+      <path d="M255 205v-62m0 62h118" stroke="#757e8b" stroke-width="1.5"/><path d="m261 191 22-13 22 6 26-31 34-9" stroke="#e95e22" stroke-width="3"/>
+      <path d="M250 232h87" stroke="#9aa3af" stroke-width="3"/><text x="367" y="247" fill="#68717e" font-size="8" font-family="sans-serif">01</text></g>
+      <path d="m423 92-22 153" stroke="#383f49" stroke-width="10" stroke-linecap="round"/><path d="m401 245-2 14 9-12" fill="#ff8045"/>
     </>}
   </svg>
+  <div class="preview-caption"><span>{labels[type]}</span><span>ILLUSTRATION</span></div>
 </div>
+<style>
+.project-preview{background:#202328;color:#cbd0d5;overflow:hidden;position:relative;aspect-ratio:1.65}
+.project-preview.biotac{background:#25282d;color:#cbd0d5}.project-preview.hande{background:#202328;color:#cbd0d5}.project-preview.thesis{background:#25282d;color:#cbd0d5}
+.preview-topline,.preview-caption{position:absolute;left:25px;right:25px;display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:1.2px;z-index:1}
+.preview-topline{top:20px}.preview-topline>span:last-child{font-size:22px;line-height:1}.preview-caption{bottom:18px;font-size:8px}.preview-caption>span:last-child{opacity:.65;font-size:7px}
+svg{width:100%;height:100%;display:block;padding:26px 10px 22px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+:global(.project-card:hover) svg,:global(.project-card:focus-within) svg{transform:scale(1.035)}
+.gripper-left,.gripper-right{transition:transform .5s ease}:global(.project-card:hover) .gripper-left,:global(.project-card:focus-within) .gripper-left{transform:translateX(9px)}:global(.project-card:hover) .gripper-right,:global(.project-card:focus-within) .gripper-right{transform:translateX(-9px)}
+@media(max-width:760px){.preview-topline,.preview-caption{left:18px;right:18px;font-size:8px}.preview-caption>span:last-child{display:none}}
+@media(prefers-reduced-motion:reduce){svg,.gripper-left,.gripper-right{transition:none!important;transform:none!important}}
+</style>

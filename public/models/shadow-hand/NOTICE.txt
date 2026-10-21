@@ -1,0 +1,8 @@
+Shadow Hand E3M5: original assets by Shadow Robot Company.
+MuJoCo Menagerie conversion by Google DeepMind and contributors.
+Source: https://github.com/google-deepmind/mujoco_menagerie/tree/71f066ad0be9cd271f7ed58c030243ef157af9f4/shadow_hand
+License: Apache-2.0 (see LICENSE).
+Website modifications: OBJ geometry converted to indexed GLB, millimetres converted to metres,
+normals normalized, palm/finger hierarchy retained, forearm and wrist omitted for desk mounting.
+Joint axes and limits retained in node extras. Animation is an illustrative website pose,
+not MuJoCo dynamics or an experimental replay. Converted by scripts/build-shadow-hand.py.

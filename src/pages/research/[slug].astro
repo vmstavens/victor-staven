@@ -8,6 +8,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <Layout title={`${item.shortTitle} — ${profile.name}`} description={item.description}>
   <main class="wrap detail-page" id="main"><div id="top"></div><a class="text-link back-link" href={`${base}#research`}>← All research interests</a><div class="eyebrow">RESEARCH INTEREST / {item.number}</div><h1>{item.shortTitle}</h1><p class="detail-intro">{item.description}</p><div class="tags">{item.tags.map(tag => <span>{tag}</span>)}</div>
-    <div class="detail-columns"><div><h2>The problem space</h2><p>{item.intro}</p><h2>Questions that interest me</h2><ul class="question-list">{item.questions.map(q => <li>{q}</li>)}</ul><a class="feature-link" href={publications[item.graphic === 'hand' ? 0 : 1].paper}>Read the related paper ↗</a></div><div><ResearchGraphic type={item.graphic} /></div></div>
+    <div class="detail-columns"><div><h2>Research overview</h2><p>{item.intro}</p><h2>Research questions</h2><ul class="question-list">{item.questions.map(q => <li>{q}</li>)}</ul><a class="feature-link" href={publications[item.graphic === 'hand' ? 0 : 1].paper}>Read the related paper ↗</a></div><div><ResearchGraphic type={item.graphic} large />
+      <p class="media-caption">{item.graphic === 'cable' ? 'Schematic of tactile cable following and routing around obstacles. The diagram illustrates the research topic; it does not depict an experimental setup.' : <>Visualization of the <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/shadow_hand">Shadow Hand model from MuJoCo Menagerie</a>. Illustrative geometry and pose; not an experimental result. <a href={`${base}models/shadow-hand/NOTICE.txt`}>Model credits and license ↗</a></>}</p></div></div>
   </main>
 </Layout>
